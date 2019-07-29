@@ -63,7 +63,7 @@ fs.writeFile('./Storage/walls.json', JSON.stringify(dataPro), (err) => {
 if (err) console.error(err);
 });
 });
-//خلفية
+/////rخلفية
 client.on("message",  message => {
   if (message.author.bot) return;
     if (message.author.id === client.user.id) return;
