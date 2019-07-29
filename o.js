@@ -28,7 +28,7 @@ client.on('ready', () => {
 
 
 
-const games = JSON.parse(fs.readFileSync('./Storage/games.json', "utf8"));
+const games = JSON.parse(fs.readFileSync('./games.json', "utf8"));
 client.on("message", message => {
   if (message.author.bot) return;
   if (!message.channel.guild) return;
@@ -36,7 +36,7 @@ client.on("message", message => {
     credits: 100,
     level: 1,
   };
-fs.writeFile('./Storage/games.json', JSON.stringify(games), (err) => {
+fs.writeFile('./games.json', JSON.stringify(games), (err) => {
 if (err) console.error(err);
 });
 });
@@ -47,7 +47,7 @@ if (err) console.error(err);
 
 var prefix = "$"
 
-let dataPro = JSON.parse(fs.readFileSync('./Storage/walls.json', 'utf8'));
+let dataPro = JSON.parse(fs.readFileSync('./walls.json', 'utf8'));
 client.on("message", message => {
   if (message.author.bot) return;
     if (message.author.id === client.user.id) return;
@@ -59,7 +59,7 @@ if(!dataPro[message.author.id]) {
                 walls: {}
             };
         }
-fs.writeFile('./Storage/walls.json', JSON.stringify(dataPro), (err) => {
+fs.writeFile('./walls.json', JSON.stringify(dataPro), (err) => {
 if (err) console.error(err);
 });
 });
@@ -180,7 +180,7 @@ if(wallpapers[args[0]].price < games[sender.id].credits) {
 }
 });
 ////////////////////بروفايل////////////////////////////
-const profile = JSON.parse(fs.readFileSync('./Storage/profile.json', "utf8"));
+const profile = JSON.parse(fs.readFileSync('./profile.json', "utf8"));
 
 client.on("message", message => {
   if (message.author.bot) return;
@@ -193,7 +193,7 @@ client.on("message", message => {
     level: 0,
     points: 0,
   };
-fs.writeFile('./Storage/profile.json', JSON.stringify(profile), (err) => {
+fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
 if (err) console.error(err);
 })
 });
@@ -583,4 +583,4 @@ message.channel.sendFile(canvas.toBuffer())
 
 
 
-client.login('shut up')
+client.login(process.env.BOT_TOKEN);
